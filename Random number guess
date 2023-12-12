@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class doloop {
+    public static void main(String[]args){
+       Scanner scan = new Scanner(System.in);
+        int rand = ((int)(Math.random()*100)) + 1;
+        int randTwo = ((int)(Math.random()*100)) + 1;
+       
+        int correctGuess = ((rand + randTwo)/2); 
+        System.out.print("guess a number from 1 to 100 that is in the middle "
+                + "of two random numbers: ");
+        int guess = scan.nextInt();
+        
+        do
+        {
+            
+        if (guess > correctGuess){
+            System.out.print("your guess is high. Guess again: ");
+            guess = scan.nextInt();}
+        if (guess < correctGuess){
+            System.out.print("your guess is too low. Guess again: ");
+            guess = scan.nextInt();
+        }
+       
+        }while (guess != correctGuess);
+    System.out.println (" you guessed the middle number correctly!. "
+            + "the two numbers were");
+    }
+    
+    
+}

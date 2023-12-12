@@ -1,1 +1,49 @@
 # project-1
+ import java.util.Scanner;
+// import scanner
+public class Hw2 
+{
+    public static void main(String[]args)
+    {
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.print("Enter current comprehensive fee: " );
+        double compFee = scan.nextDouble();
+        // asking how much the student's education has cost so far
+        System.out.print("Enter the increase rate: " );
+        double intRate = scan.nextDouble();
+        // asking the intrest rate
+        System.out.print("Enter child's current grade (mid-year): " );
+        int grade = scan.nextInt();
+        // asking for the student's grade
+        System.out.println("Here is a projection for your child's college "
+                + " costs:");
+        
+        System.out.println("Grade\tAnnual Comprehensive Fee\tRunning Total");
+        
+        double newIntRate = ((intRate*.01) + 1); 
+        // formula for calculating intrest
+        double runTotal = 0;
+        while (grade <= 16)
+        {
+            if ((grade >= 13) && (grade <= 16)) 
+               // if grade is greater than 13 and less than 16 run 
+            {
+                 runTotal = runTotal + compFee;
+                System.out.println(grade + "\t$" + compFee + "\t$" + runTotal);
+            }
+            else
+                // this is the end of pre college and start of college
+                System.out.println(grade + "\t$" + compFee);
+            grade = grade + 1;
+            compFee = compFee * newIntRate;
+            if (grade == 13)
+                System.out.println("--- Start College ---");   
+        }
+        
+        System.out.println("The comprehensive fee for a four-year education is "
+                         + "projected to be" + runTotal );
+        //total cost
+    }
+    
+}

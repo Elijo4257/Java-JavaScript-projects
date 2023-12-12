@@ -1,0 +1,41 @@
+import java.util.Scanner;
+// import scanner
+import java.io.File;
+public class hw3pt2 {
+     public static void main( String[] args ) throws Exception {
+        //this is the part where you read the file
+        File file = new File("catalog.txt");
+        Scanner input = new Scanner(file);
+        int array[] = new int[101];
+        // the array is 101 spaces because we ignore the zero spot
+        int i = 1;
+        // makes me skip the zero spot and move to the first 
+        // now I can start a while loop that stores the data I need for the code
+        while(input.hasNextLine()){ // while there is a next line
+            String temp = input.nextLine();
+            String tempArray[] = temp.split(" ");
+            // making each line after a space its own array becuase I only want
+            // the ids
+            array[i] = Integer.parseInt(tempArray[0]); 
+            // changing a string into a integer
+            i++;
+        }
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter starting position in file (1 - 100): ");
+        int startp = scan.nextInt(); // start p = starting position
+        System.out.print(startp + " ->");
+        int nextp = startp;         // nextp = next position
+        int next = 1; // skip the zero spot
+        while(startp != array[nextp]){
+           // next keeps track of the amount of links so i can have a count at the 
+           // end
+            nextp = array[nextp];
+            System.out.print(" " + nextp);
+            next++;
+            // adding one to the count of next 
+        }
+        System.out.println(" ->"+ startp); 
+        System.out.println("The chain is " + next + " links long.");
+        
+     }
+}
